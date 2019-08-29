@@ -12,11 +12,17 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>WeBOP</title>
+    <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/thehalfwedbride/Flight-WeBOP/master/favicon.png"/>
+    <link href="https://fonts.googleapis.com/css?family=Livvic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <style>
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
+        }
+        #logo{
+        	margin-left: 47%;
+        	margin-top: 5px;
         }
         #navbar {
             overflow: hidden;
@@ -70,37 +76,8 @@
             border-top-left-radius: 15px;
             border-top-right-radius: 15px;
         }
-        /* For sidenav */
-        .sidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 10;
-            top: 0;
-            left: 0;
-            background-color: #6b1c99;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #fff;
-            display: block;
-            transition: 0.3s;
-        }
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
+        
+        
         .form-check-label {
             font-size: 15px;
         }
@@ -126,6 +103,16 @@
             margin-bottom: 10%;
             width: 100%;
             top: 0;
+            
+        }
+        #successtxt{
+        	margin:auto;
+        	padding-top:15px;
+        	padding-bottom:5px;
+        	width: 60%;
+        	border: 3px solid #ddd;
+            border-radius : 10px;
+            font-family: 'Livvic', sans-serif;
         }
         .btn {
             background-color: #6b1c99;
@@ -187,21 +174,22 @@
 
     <div id="header" class="header">
         <div id="navbar" class="sticky">
-            <a data-toggle="modal" data-target="#loginModal">Login</a> <a href="javascript:void(0)">Contact</a>
+            <a data-toggle="modal" data-target="search.jsp">Home</a> <a href="javascript:void(0)">Contact</a>
             <a href="javascript:void(0)">FAQ's</a>
-            <a href="search.jsp" class="logo" style="float:left;padding:0;"><img src="https://raw.githubusercontent.com/thehalfwedbride/Flight-WeBOP/master/PicsArt_08-18-10.22.33.png"
-                height="50px" width="50px"></a>
+            <img src="https://raw.githubusercontent.com/thehalfwedbride/Flight-WeBOP/master/LOGO.png"
+                height="40px" width="70px" id="logo">
         </div>
     </div>
 	<div class="pos">
-		<div class="container">
+		<div class="container" id="successtxt">
 			<div class="row">
 				<div class="col-2"></div>
 				<div class="col-8" style="text-align:center;">
 					<%
 						String ticketId= session.getAttribute("ticketId").toString();
-						out.println("<h1>Booking Successful!</h2>");
-						out.println("<h2>Your PNR Number: "+ticketId + "</h2>");
+						out.println("<h2>Your ticket has been booked!</h2>");
+						out.println("<h3><b>PNR Number:</b> "+ticketId + "</h3>");
+						out.println("<pre>*Please note the PNR number for future reference.</pre>");
 								
 					%>
 				</div>
