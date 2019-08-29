@@ -12,12 +12,32 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>WeBOP</title>
+    <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/thehalfwedbride/Flight-WeBOP/master/favicon.png"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <style>
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
         }
+        #logo{
+        	margin-left: 47%;
+        	margin-top: 5px;
+        }
+        .w3-blue{
+        background-color: #500f75 !important;	
+        width : 86%;
+        border-radius: 7px;
+        }
+        .w3-input
+        {
+        	width : 71% !important;
+        }
+        .w3-deep-purple
+        {
+        	background-color:#500f75 !important;
+        }
+        
         #navbar {
             overflow: hidden;
             background-color: #500f75;
@@ -68,37 +88,8 @@
             border-top-left-radius: 15px;
             border-top-right-radius: 15px;
         }
-        /* For sidenav */
-        .sidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 10;
-            top: 0;
-            left: 0;
-            background-color: #6b1c99;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #fff;
-            display: block;
-            transition: 0.3s;
-        }
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
+        
+        
         .form-check-label {
             font-size: 15px;
         }
@@ -120,7 +111,7 @@
         .pos {
             display: flex;
             position: absolute;
-            margin-top: 15%;
+            margin-top: 6%;
             margin-bottom: 10%;
             width: 100%;
             top: 0;
@@ -143,7 +134,7 @@
         #footer {
             position: relative;
             bottom: 0;
-            margin-top: 30%;
+            margin-top: 40%;
             width: 100%;
             /* Set the fixed height of the footer here */
             height: 140px;
@@ -184,52 +175,53 @@
 <body>
     <div id="header" class="header">
         <div id="navbar" class="sticky">
-            <a data-toggle="modal" data-target="#loginModal">Login</a> <a href="javascript:void(0)">Contact</a>
+            <a data-toggle="modal" data-target="search.jsp">Home</a> <a href="javascript:void(0)">Contact</a>
             <a href="javascript:void(0)">FAQ's</a>
-            <span style="font-size: 30px; cursor: pointer; color: #fff;" onclick="openNav()">&#9992;</span>
-            <img src="https://raw.githubusercontent.com/thehalfwedbride/Flight-WeBOP/master/PicsArt_08-18-10.22.33.png"
-                height="40px" width="40px">
-        </div>
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+            <img src="https://raw.githubusercontent.com/thehalfwedbride/Flight-WeBOP/master/LOGO.png"
+                height="40px" width="70px" id="logo">
         </div>
     </div>
 
 	<div class="pos">
-		<div class="container">
+		<div class="container" id="passengerdetails">
 		<form method="post" action="BookingServlet">
 			<div class="row">
-				<div class="col-1"></div>
-				<div class="col-10">
+				<div class="col-2"></div>
+				<div class="col-9">
 					<%
 						ArrayList<String> naam= new ArrayList<String>();
 						String number=session.getAttribute("bookings").toString();
 						int num=Integer.parseInt(number);
-						out.println("Enter passenger details:  "+"<br>");
+						out.println("<h3 class=\"w3-blue\">&nbsp;&nbsp;Enter passenger details:  </h3>"+"<br>");
 						for(int i=0;i<num;i++)
 						{
 							String j=Integer.toString(i);
 							naam.add(j);
-							out.println("Enter name:"+"<input type='text' name='"+j+"'>"+"&nbsp;Enter age:"+" <input type='text' name='age'>");
-							out.println("<br>");
+							out.println("<div class=\"w3-half\">");
+							out.println("Name:");
+							out.println("<input class=\"w3-input\" type='text' name='"+j+"'>");
+							out.println("</div><div class=\"w3-half\">");
+							out.println("Age:");
+							out.println("<input class=\"w3-input\" type='text' name='age'>");
+							out.println("</div><br>");
+							
 						}
-						
-						session.setAttribute("naam", naam);
-						
-						
+						session.setAttribute("naam", naam);	
 					
 					%>
 				</div>
 				<div class="col-1"></div>
 			</div>
-			<div class="row">
+			<br>
+			<div class="row" style="text-align:right;">
 				<div class="col-4"></div>
-				<div class="col-4">
-						<input type="submit" value="proceed">
+				<div class="col-2" style="margin-left:3%;">
+						<input class="w3-btn w3-round-large w3-deep-purple" type="submit" value="proceed">
 				</div>
-				<div class="col-4"></div>
+				<div class="col-6"></div>
 			</div>
+			<br>
+		
 		</form>
 		</div>
 	</div>
