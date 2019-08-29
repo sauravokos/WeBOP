@@ -31,11 +31,16 @@ Bookings : <input type="text" name="bookings">
 <head>
     <meta charset="ISO-8859-1">
     <title>WeBOP</title>
+    <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/thehalfwedbride/Flight-WeBOP/master/favicon.png"/>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <style>
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
+        }
+        #logo{
+        	margin-left: 47%;
+        	margin-top: 5px;
         }
         #navbar {
             overflow: hidden;
@@ -87,37 +92,8 @@ Bookings : <input type="text" name="bookings">
             border-top-left-radius: 15px;
             border-top-right-radius: 15px;
         }
-        /* For sidenav */
-        .sidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 10;
-            top: 0;
-            left: 0;
-            background-color: #6b1c99;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #fff;
-            display: block;
-            transition: 0.3s;
-        }
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
+        
+        
         .form-check-label {
             font-size: 15px;
         }
@@ -205,13 +181,8 @@ Bookings : <input type="text" name="bookings">
         <div id="navbar" class="sticky">
             <a data-toggle="modal" data-target="#loginModal">Login</a> <a href="javascript:void(0)">Contact</a>
             <a href="javascript:void(0)">FAQ's</a>
-            <span style="font-size: 30px; cursor: pointer; color: #fff;" onclick="openNav()">&#9992;</span>
-            <img src="https://raw.githubusercontent.com/thehalfwedbride/Flight-WeBOP/master/PicsArt_08-18-10.22.33.png"
-                height="40px" width="40px">
-        </div>
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+            <img src="https://raw.githubusercontent.com/thehalfwedbride/Flight-WeBOP/master/LOGO.png"
+                height="40px" width="70px" id="logo">
         </div>
     </div>
 
@@ -276,7 +247,7 @@ Bookings : <input type="text" name="bookings">
                                     <div class="col-3">
                                         <div class="form-check-inline">
                                             <label class="form-check-label"> <input type="radio"
-                                                    class="form-check-input" name="optRadio" value="return">Return Trip
+                                                    class="form-check-input" name="optRadio" value="return" disabled>Return Trip
                                             </label>
                                         </div>
                                     </div>
@@ -297,14 +268,14 @@ Bookings : <input type="text" name="bookings">
                                     </div>
                                     <div class="col-2"></div>
                                     <div class="col-sm-5" style="font-size:17px;">
-                                        <input type="date" class="form-control" id="returnDate"  name="returnDate">
+                                        <input type="date" class="form-control" id="returnDate"  name="returnDate" disabled>
                                     </div>
                                 </div>
                                 <div class="space"></div>
                                 <div class="row" style="padding-left:8px;">
                                     <div class="col-5">
                                         <label for="noOfPassengers" style="font-size:17px;">Passengers:</label>
-                                        <input type="number" min="1" max="10" class="form-control input-xs"
+                                        <input type="number" min="1" max="5" class="form-control input-xs"
                                             id="noOfPassengers" name="bookings">
                                     </div>
                                     <div class="col-2"></div>
