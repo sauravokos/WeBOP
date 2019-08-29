@@ -12,11 +12,17 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>WeBOP</title>
+    <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/thehalfwedbride/Flight-WeBOP/master/favicon.png"/>
+    <link href="https://fonts.googleapis.com/css?family=Livvic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <style>
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
+        }
+        #logo{
+        	margin-left: 47%;
+        	margin-top: 5px;
         }
         #navbar {
             overflow: hidden;
@@ -68,37 +74,8 @@
             border-top-left-radius: 15px;
             border-top-right-radius: 15px;
         }
-        /* For sidenav */
-        .sidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 10;
-            top: 0;
-            left: 0;
-            background-color: #6b1c99;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #fff;
-            display: block;
-            transition: 0.3s;
-        }
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
+        
+        
         .form-check-label {
             font-size: 15px;
         }
@@ -124,6 +101,18 @@
             margin-bottom: 10%;
             width: 100%;
             top: 0;
+            font-family: 'Livvic', sans-serif;
+        }
+        #flightchoice
+        {
+       		margin:auto;
+        	padding-top:15px;
+        	padding-bottom:5px;
+        	width: 48%;
+        	border: 3px solid #ddd;
+            border-radius : 10px;
+            font-family: 'Livvic', sans-serif;
+        
         }
         .btn {
             background-color: #6b1c99;
@@ -187,50 +176,47 @@
         <div id="navbar" class="sticky">
             <a data-toggle="modal" data-target="#loginModal">Login</a> <a href="javascript:void(0)">Contact</a>
             <a href="javascript:void(0)">FAQ's</a>
-            <span style="font-size: 30px; cursor: pointer; color: #fff;" onclick="openNav()">&#9992;</span>
-            <img src="https://raw.githubusercontent.com/thehalfwedbride/Flight-WeBOP/master/PicsArt_08-18-10.22.33.png"
-                height="40px" width="40px">
-        </div>
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+            <img src="https://raw.githubusercontent.com/thehalfwedbride/Flight-WeBOP/master/LOGO.png"
+                height="40px" width="70px" id="logo">
         </div>
     </div>
 	<div class="pos">
-		<div class="container">
+		<div class="container" id="flightchoice">
 			<div class="row">
-				<div class="col-4"></div>
-				<div class="col-4">
+				<div class="col-1"></div>
+				<div class="col-10">
 					<%
 					ArrayList <FlightDetailBean> flightList= (ArrayList<FlightDetailBean>)session.getAttribute("flightlist");
 					if(flightList.size()==0){
 						out.println("<h4>Sorry...No flights available!</h4>");
+						out.println("<input type=\"button\" class=\"btn btn-primary\" value=\"Search again\" onclick=\"location.href = 'search.jsp';\">");
+
 					}
 					else{
-						out.println("<h3 class=\"mb-0\">Flight Details<h3><br>");
+						out.println("<h3 class=\"mb-0\">FLIGHT DETAILS<h3><br>");
 						for(FlightDetailBean fdb : flightList)
 						{	
 							out.println("<div class=\"row\">");
-							out.println("<div class=\"col-1\" style=\"padding-right:0; float:right;\">");
+							out.println("<div class=\"col-1\" style=\"padding-right:0; float:left;\">");
 							out.println("<input type='radio' style=\"vertical-align:middle;\" name=\"flightId\" value=\""+Integer.toString(fdb.getFlightId())+" "+fdb.getDepTime()+" "+fdb.getArrTime()+"\">");
 							out.println("</div>");
-							out.println("<div class=\"col-11\" style=\"padding-left:2px;\">" );
+							out.println("<div class=\"col-11\" style=\"padding-left:2px; float:left;\">" );
 							out.println("<h5 class=\"radio-inline mb-0\" style=\"float:left;\">"+fdb.getFlightId()+"&nbsp&nbsp;"+fdb.getSource()+"&nbsp&nbsp;"+fdb.getDestination()+"&nbsp&nbsp;"+fdb.getPrice()+"&nbsp&nbsp;"+fdb.getDepTime()+"&nbsp&nbsp;"+fdb.getArrTime()+"</h5>");
 							out.println("</div>");
 							out.println("<br>");
 							out.println("</div>");
+							out.println("<br>");
 						}
+						out.println("<input type=\"button\" class=\"btn btn-primary\" value=\"Continue Booking\" data-toggle=\"modal\" data-target=\"#loginModal\">");
 					}
 					
 					%>
 				</div>
-				<div class="col-4"></div>
+				<div class="col-1"></div>
 			</div>
 			<div class="row">
 				<div class="col-4"></div>
-				<div class="col-4">
-					<input type="button" class="btn btn-primary" value="Continue Booking" data-toggle="modal" data-target="#loginModal">
-				</div>
+				<div class="col-4"></div>
 				<div class="col-4"></div>
 			</div>
 		</div>
